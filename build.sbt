@@ -21,10 +21,23 @@ testOptions in Test += Tests.Argument("-oDF")
 
 libraryDependencies ++= List(
     "org.im4java" % "im4java" % "1.4.0",
-    "io.youi" %% "youi-core" % "0.11.13",
+    "io.youi" %% "youi-core" % "0.11.13"  excludeAll(ExclusionRule(organization = "io.circe")),
     "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
     "org.scalatest" %% "scalatest" % "3.1.0-SNAP13" % "test"
-)
+) ++ circe_json
+
+val circeVersion = "0.11.2"
+
+val circe_json = Seq(
+    "io.circe" %% "circe-core",
+    "io.circe" %% "circe-generic",
+    "io.circe" %% "circe-generic-extras",
+    "io.circe" %% "circe-parser",
+    "io.circe" %% "circe-refined",
+    "io.circe" %% "circe-literal"
+
+).map(_ % circeVersion)
+
 
 publishTo in ThisBuild := sonatypePublishTo.value
 sonatypeProfileName in ThisBuild := "org.matthicks"
