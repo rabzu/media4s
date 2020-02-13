@@ -44,7 +44,7 @@ case class MediaInfo(streams: List[MediaStream], format: MediaFormat) {
   def hasAudio: Boolean = audios.nonEmpty
 
   override def toString: String = {
-    val audioString = audio.fold("No Audio")(audio => s"$audio")
+    val audioString = audio.getOrElse("No Audio")
     s"MediaInfo(duration: $duration, start: $start, video: $video, $audioString, frames: $frames)"
   }
 }

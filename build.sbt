@@ -54,3 +54,4 @@ scmInfo in ThisBuild := Some(
 developers in ThisBuild := List(
     Developer(id="darkfrog", name="Matt Hicks", email="matt@matthicks.com", url=url("http://matthicks.com"))
 )
+bloopAggregateSourceDependencies in Global := true
